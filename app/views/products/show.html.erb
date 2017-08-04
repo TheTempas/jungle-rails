@@ -40,6 +40,21 @@
         </dl>
 
       </div>
+
+      <%= form_for @review, url: product_reviews_path(@product) do |f| %>
+
+        <%= f.text_area :description %>
+
+        <%= f.select (:rating) do %>
+          <% [["Excellent - 5", 5], ["4", 4], ["3", 3], ["2", 2], ["1", 1]].each do |c| %>
+          <%= content_tag(:option, c.first, value: c.last) %>
+            <% end %>
+          <% end %>
+
+        <%= f.submit "Post Review" %>
+
+       <% end %>
+
     </div>
 
   </article>

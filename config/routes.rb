@@ -3,13 +3,19 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   get '/login' => 'sessions#new'
+  # get request for '/login' rendered by new within sessions controller
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  resources :products, only: [:index, :show]
+
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create]
+    # ^ This maps to the Reviews controller create action.
+  end
+
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do
