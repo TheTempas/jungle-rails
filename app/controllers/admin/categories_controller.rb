@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
 
+  http_basic_authenticate_with name: env["USERNAME"], password: env["PASSWORD"]
+
   def index
     @categories = Category.order(id: :desc).all
     # Active Record query pulls everything from Category in database
