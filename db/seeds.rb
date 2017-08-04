@@ -32,8 +32,14 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 ## PRODUCTS
 
 puts "Re-creating Products ..."
-
 Product.destroy_all
+
+puts "Re-creating Reviews ... "
+Review.destroy_all
+
+puts "Re-creating Users ... "
+User.destroy_all
+
 
 cat1.products.create!({
   name:  'Men\'s Classy shirt',
@@ -132,5 +138,25 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+(20.times).each do
+User.create({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: Faker::Internet.password(8)
+  })
+end
+
+@products_list = Product.all
+
+@products_list.each do |product|
+(5.times).each do
+  product.reviews.create!({
+    user_id: Faker::Number.between(1, 10),
+    rating: Faker::Number.between(1, 5),
+    description: Faker::Hipster.paragraph(4)
+  })
+  end
+end
 
 puts "DONE!"
