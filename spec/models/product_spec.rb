@@ -4,7 +4,7 @@ RSpec.describe Product, type: :model do
   describe 'Validations' do
 
     before do
-      @category = Category.new(name: "Test Category")
+      @category = Category.new(name: "Test Products Category")
     end
 
     it "Should not save if there is no name" do
