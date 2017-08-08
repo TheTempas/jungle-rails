@@ -1,26 +1,34 @@
 class ReviewsController < ApplicationController
 
-#
   def create
-    review = find_by_user(params[:user])
 
+    product = Product.find(params[:product_id])
+    # Retrieve product from database.
 
-    review = Review.new
+    @review = product.reviews.new(rating: params[:review][:rating], description: params[:review][:description], user: current_user)
+    # Creating review for that product and storing it in 'review'
 
-    @review.user = current_user
+    # review.user = current_user
+    # Assign review to user before saving
+    puts @review.inspect
+    puts params.inspect
 
-
-
-
-    private
-
-    def review_params
-      params.require(:review).permit
-        :rating
-        :description
-
+    if @review.save
+      puts "Review saved"
+      redirect_to '/products/#{product.id}', notice: "Review created"
+    else
+      puts "Review not saved"
+      render 'products/show'
     end
+
   end
-#
+
+    # private
+
+    #   def review_params
+    #   params.require(:review).permit
+    #     :rating
+    #     :description
+    #   end
 
 end
