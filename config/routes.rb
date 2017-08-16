@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-
   resources :products, only: [:index, :show] do
     resources :reviews, only: [:create]
     # ^ This maps to the Reviews controller create action.
@@ -29,6 +28,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
     resources :categories, except: [:edit, :update, :show]
+    resources :groups
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

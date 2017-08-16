@@ -42,6 +42,18 @@
       </div>
 
       <%= form_for @review, url: product_reviews_path(@product) do |f| %>
+
+       <% if f.object.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented saving:</strong>
+          <ul>
+            <% f.object.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
         <%= f.text_area :description %>
         <%= f.select (:rating) do %>
           <% [["5 - Excellent", 5], ["4 - Great", 4], ["3 - Good", 3], ["2 - Fair", 2], ["1 - Poor", 1]].each do |c| %>
