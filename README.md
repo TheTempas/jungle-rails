@@ -2,7 +2,10 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+#### Product Details Page
 !["Product Details"](/docs/product-details.png)
+
+#### Home Page
 !["Home Page"](/docs/home-page.png)
 
 ## Setup
