@@ -3,10 +3,11 @@
 An e-commerce application built with Ruby, Rails, ActiveRecord, and RSpec.
 
 #### Product Details Page
-!["Screenshot of Product Details"](https://github.com/TheTempas/jungle-rails/blob/master/docs/product-details.png)
+
+!["Product Details"](/docs/product-details.png)
 
 #### Home Page
-!["Screenshot of Home Page"](https://github.com/TheTempas/jungle-rails/blob/master/docs/home-page.png)
+!["Home Page"](/docs/home-page.png)
 
 ## Dependencies
 
